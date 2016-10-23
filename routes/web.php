@@ -27,3 +27,11 @@ Route::get('/realm/active/{realm}', function($realm) {
     session(['realm' => $realm]);
     return redirect()->back();
 });
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/hearth/{guid}', 'HearthstoneController@confirm');
+
+    Route::get('user/profile', function () {
+        // Uses Auth Middleware
+    });
+});

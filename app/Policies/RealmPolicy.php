@@ -12,54 +12,68 @@ class RealmPolicy
     use HandlesAuthorization;
 
     /**
-     * Determine whether the user can view the realm.
+     * Determine whether the user is an Admin of the realm.
      *
      * @param  App\Account  $user
      * @param  App\Realm  $realm
      * @return mixed
      */
-    public function view(Account $user)
+    public function Admin(Account $user, Realm $realm)
     {
         $level = DB::connection('auth')->table('account_access')->where([
             ['id', '=', $user->id],
             ['gmlevel', '=', 3],
+            ['RealmID', '=', $realm->id],
+        ])->orWhere([
+            ['id', '=', $user->id],
+            ['gmlevel', '>=', 3],
+            ['RealmID', '=', -1]
         ])->count();
 
         return $level;
     }
 
     /**
-     * Determine whether the user can create realms.
+     * Determine whether the user is a GM of the realm.
      *
-     * @param  App\User  $user
-     * @return mixed
-     */
-    public function create(User $user)
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can update the realm.
-     *
-     * @param  App\User  $user
+     * @param  App\Account  $user
      * @param  App\Realm  $realm
      * @return mixed
      */
-    public function update(User $user, Realm $realm)
+    public function GM(Account $user, Realm $realm)
     {
-        //
+        $level = DB::connection('auth')->table('account_access')->where([
+            ['id', '=', $user->id],
+            ['gmlevel', '>=', 2],
+            ['RealmID', '=', $realm->id],
+        ])->orWhere([
+            ['id', '=', $user->id],
+            ['gmlevel', '>=', 3],
+            ['RealmID', '=', -1]
+        ])->count();
+
+        return $level;
     }
 
     /**
-     * Determine whether the user can delete the realm.
+     * Determine whether the user is a Moderator of the realm.
      *
-     * @param  App\User  $user
+     * @param  App\Account  $user
      * @param  App\Realm  $realm
      * @return mixed
      */
-    public function delete(User $user, Realm $realm)
+    public function Moderator(Account $user, Realm $realm)
     {
-        //
+        $level = DB::connection('auth')->table('account_access')->where([
+            ['id', '=', $user->id],
+            ['gmlevel', '>=', 1],
+            ['RealmID', '=', $realm->id],
+        ])->orWhere([
+            ['id', '=', $user->id],
+            ['gmlevel', '>=', 3],
+            ['RealmID', '=', -1]
+        ])->count();
+
+        return $level;
     }
 }

@@ -6,12 +6,12 @@ use App\Account;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class AdminPolicy
+class ModeratorPolicy
 {
     use HandlesAuthorization;
 
     /**
-     * Determine whether the user is an administrator.
+     * Determine whether the user is a GM.
      *
      * @param  App\Account $user
      * @return mixed
@@ -20,11 +20,7 @@ class AdminPolicy
     {
         $level = DB::connection('auth')->table('account_access')->where([
             ['id', '=', $user->id],
-            ['gmlevel', '>=', 3],
-            ['RealmID', '=', -1]
-        ])->orWhere([
-        ['id', '=', $user->id],
-        ['gmlevel', '>=', 3],
+            ['gmlevel', '>=', 1],
         ])->count();
 
         return $level;

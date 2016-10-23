@@ -21,4 +21,9 @@ class Account extends Authenticatable
     {
         return $this->sha_pass_hash;
     }
+
+    public function characters()
+    {
+        return $this->hasMany(Character::class, 'account', 'id');
+    }
 }

@@ -41,18 +41,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $active = Realm::find(session('realm'));
-        $cconn = Database::where([
-            ['realmid', '=', $active->id],
-            ['type', '=', 'c']
-        ])->first();
-        Config::set('database.connections.character.host', $cconn->address);
-        Config::set('database.connections.character.port', $cconn->port);
-        Config::set('database.connections.character.database', $cconn->name);
-        Config::set('database.connections.character.username', $cconn->username);
-        Config::set('database.connections.character.password', $cconn->password);
-        $char = DB::reconnect('character');
-        $chars = $char->table('characters')->where('account', Auth::user()->id)->get();
-        return view('home', compact('chars'));
+        return view('home');
     }
 }
