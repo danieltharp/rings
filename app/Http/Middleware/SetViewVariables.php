@@ -74,13 +74,21 @@ class SetViewVariables
                         $char->race = "Troll";
                         break;
                     case 9:
-                        $char->race = "Error";
+                        $char->race = "Goblin";
                         break;
                     case 10:
                         $char->race = "Blood Elf";
                         break;
                     case 11:
                         $char->race = "Draenei";
+                        break;
+                    case 22:
+                        $char->race = "Worgen";
+                        break;
+                    case 24:
+                    case 25:
+                    case 26:
+                        $char->race = "Pandaren";
                         break;
                 }
                 switch($char->class) {
@@ -112,7 +120,7 @@ class SetViewVariables
                         $char->class = "Warlock";
                         break;
                     case 10:
-                        $char->class = "Error";
+                        $char->class = "Monk";
                         break;
                     case 11:
                         $char->class = "Druid";
