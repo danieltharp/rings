@@ -8,7 +8,7 @@ class Character extends Model
 {
     protected $connection='character';
     protected $table='characters';
-    public $timestamps='false';
+    public $timestamps=false;
     protected $primaryKey='guid';
 
     public function account()

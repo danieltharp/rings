@@ -123,7 +123,7 @@ class SetViewVariables
                         $char->gender = "Male";
                         break;
                     case 1:
-                        $char->race = "Female";
+                        $char->gender = "Female";
                         break;
                 }
             }

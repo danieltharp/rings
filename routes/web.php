@@ -30,6 +30,7 @@ Route::get('/realm/active/{realm}', function($realm) {
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/hearth/{guid}', 'HearthstoneController@confirm');
+    Route::post('/hearth/{guid}', 'HearthstoneController@hearth');
 
     Route::get('user/profile', function () {
         // Uses Auth Middleware
