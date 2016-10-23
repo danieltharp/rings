@@ -9,6 +9,7 @@ class Database extends Model
 
     protected $connection = 'rings';
     public $timestamps=false;
+    public $guarded=[];
 
     public function realm()
     {

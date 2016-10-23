@@ -10,7 +10,10 @@ use Illuminate\Support\Facades\DB;
 class RealmPolicy
 {
     use HandlesAuthorization;
-
+    public function getRealm(){
+        $active = Realm::find(session('realm'));
+        return $active;
+    }
     /**
      * Determine whether the user is an Admin of the realm.
      *
@@ -18,8 +21,9 @@ class RealmPolicy
      * @param  App\Realm  $realm
      * @return mixed
      */
-    public function Admin(Account $user, Realm $realm)
+    public function Admin(Account $user, Realm $realm = null)
     {
+        if (!$realm) { $realm = $this->getRealm(); }
         $level = DB::connection('auth')->table('account_access')->where([
             ['id', '=', $user->id],
             ['gmlevel', '=', 3],
@@ -40,8 +44,9 @@ class RealmPolicy
      * @param  App\Realm  $realm
      * @return mixed
      */
-    public function GM(Account $user, Realm $realm)
+    public function GM(Account $user, Realm $realm = null)
     {
+        if (!$realm) { $realm = $this->getRealm(); }
         $level = DB::connection('auth')->table('account_access')->where([
             ['id', '=', $user->id],
             ['gmlevel', '>=', 2],
@@ -62,8 +67,9 @@ class RealmPolicy
      * @param  App\Realm  $realm
      * @return mixed
      */
-    public function Moderator(Account $user, Realm $realm)
+    public function Moderator(Account $user, Realm $realm = null)
     {
+        if (!$realm) { $realm = $this->getRealm(); }
         $level = DB::connection('auth')->table('account_access')->where([
             ['id', '=', $user->id],
             ['gmlevel', '>=', 1],

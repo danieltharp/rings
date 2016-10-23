@@ -12,7 +12,7 @@ class Realm extends Model
 
     public function databases()
     {
-        return $this->hasMany(Database::class);
+        return $this->hasMany(Database::class, 'realmid');
     }
 
     public function uptime()

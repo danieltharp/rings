@@ -45,7 +45,7 @@
                         Admin Tools
                     </div>
                     <div class="panel-body">
-                        Edit Realms
+                        <a href="/admin/realms">Manage Realms</a>
                     </div>
                 </div>
             </div>

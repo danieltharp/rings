@@ -31,8 +31,18 @@ Route::get('/realm/active/{realm}', function($realm) {
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/hearth/{guid}', 'HearthstoneController@confirm');
     Route::post('/hearth/{guid}', 'HearthstoneController@hearth');
+});
 
-    Route::get('user/profile', function () {
-        // Uses Auth Middleware
-    });
+Route::group(['prefix' => 'admin', 'middleware' => 'can:admin,App\Realm'], function () {
+    Route::get('realms', 'RealmController@index');
+    Route::get('realms/edit/{realmid}', 'RealmController@edit');
+    Route::post('realms', 'RealmController@update');
+});
+
+Route::group(['prefix' => 'gm', 'middleware' => 'can:gm,App\Realm'], function () {
+    Route::get('realms', 'RealmController@index');
+});
+
+Route::group(['prefix' => 'mod', 'middleware' => 'can:moderator,App\Realm'], function () {
+    Route::get('realms', 'RealmController@index');
 });
