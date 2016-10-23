@@ -46,6 +46,19 @@ return [
 
     'connections' => [
 
+        'auth' => [
+            'driver' => 'mysql',
+            'host' => env('DB_HOST', 'localhost'),
+            'port' => env('DB_PORT', '3306'),
+            'database' => env('DB_DATABASE', 'auth'),
+            'username' => env('DB_USERNAME', 'authuser'),
+            'password' => env('DB_PASSWORD', 'authpassword'),
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
         'rings' => [
             'driver' => 'mysql',
             'host' => env('DB_HOST', 'localhost'),
@@ -59,7 +72,32 @@ return [
             'strict' => true,
             'engine' => null,
         ],
-
+        'character' => [
+            'driver' => 'mysql',
+            'host' => '',
+            'port' => '',
+            'database' => '',
+            'username' => '',
+            'password' => '',
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
+        'world' => [
+            'driver' => 'mysql',
+            'host' => '',
+            'port' => '',
+            'database' => '',
+            'username' => '',
+            'password' => '',
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
     ],
 
     /*

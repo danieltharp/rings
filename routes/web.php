@@ -22,3 +22,8 @@ Route::get('notes', function(){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/realm/active/{realm}', function($realm) {
+    session(['realm' => $realm]);
+    return redirect()->back();
+});

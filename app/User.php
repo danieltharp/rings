@@ -14,6 +14,8 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $connection = 'auth';
     protected $guarded = [];
     protected $table = 'account';
+    public $timestamps=false;
 }

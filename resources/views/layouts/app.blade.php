@@ -54,10 +54,20 @@
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->username }} <span class="caret"></span>
+                                {{ $user->username }} <span class="caret"></span>
                             </a>
-
                             <ul class="dropdown-menu" role="menu">
+                            @foreach ($realms as $realm)
+                                <li>
+                                    {{ $realm->name }} ({{ $realm->numchars }})
+                                    @if($active->id != $realm->id)
+                                        <a class="btn btn-info" href="/realm/active/{{ $realm->id }}">Make Active</a>
+                                    @else
+                                        <a class="btn btn-success" style="cursor: not-allowed">Active</a>
+                                    @endif
+                                </li>
+                            @endforeach
+
                                 <li>
                                     <a href="{{ url('/logout') }}"
                                         onclick="event.preventDefault();
