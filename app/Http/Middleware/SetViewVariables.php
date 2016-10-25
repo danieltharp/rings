@@ -21,7 +21,7 @@ class SetViewVariables
     public function handle($request, Closure $next)
     {
         $user = $this->auth->user();
-
+        if (session('realm') == null) { session(['realm' => 1]); }
         $auth = DB::connection('auth');
         $realms = Realm::with('uptime')->get();
         foreach ($realms as $realm) {
