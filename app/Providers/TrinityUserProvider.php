@@ -49,8 +49,10 @@ class TrinityUserProvider implements UserProvider
      * @return \Illuminate\Contracts\Auth\Authenticatable|null
      */
     public function retrieveByCredentials(array $credentials){
-    $user = Account::where('username',$credentials['username'])->first();
-        return $user;
+    if(isset($credentials['username'])) {
+        $user = Account::where('username', $credentials['username'])->first();
+    } else { $user = Account::where('email',$credentials['email'])->first(); }
+    return $user;
     }
 
     /**
