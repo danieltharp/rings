@@ -59,7 +59,7 @@
                             <ul class="dropdown-menu" role="menu">
                             @foreach ($realms as $realm)
                                 <li>
-                                    {{ $realm->name }} ({{ $realm->numchars }})
+                                    {{ $realm->name }} ({{ $realm->numchars or 0 }})
                                     @if($active->id != $realm->id)
                                         <a class="btn btn-info" href="/realm/active/{{ $realm->id }}">Make Active</a>
                                     @else
