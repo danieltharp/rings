@@ -45,7 +45,14 @@
                         Admin Tools
                     </div>
                     <div class="panel-body">
-                        <a href="/admin/realms">Manage Realms</a>
+                        <div class="row">
+                            <div class="col-md-4 col-sm-12">
+                                <a href="/admin/realms" class="btn btn-info">Manage Realms</a>
+                            </div>
+                            <div class="col-md-4 col-sm-12">
+                                <a href="/admin/permissions" class="btn btn-info">Manage Permissions</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -59,7 +66,14 @@
                         GM Tools
                     </div>
                     <div class="panel-body">
-                        Edit Characters
+                        <div class="row">
+                            <div class="col-md-4 col-sm-12">
+                                <a href="/gm/announce" class="btn btn-info">Manage Announcements</a>
+                            </div>
+                            <div class="col-md-4 col-sm-12">
+                                <a href="/gm/bans" class="btn btn-info">Manage Bans</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -73,7 +87,11 @@
                         Moderator Tools
                     </div>
                     <div class="panel-body">
-                        Approve Pending Changes
+                        <div class="row">
+                            <div class="col-md-4 col-sm-12">
+                                <a href="/mod/pending" class="btn btn-info">Manage Pending Actions</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

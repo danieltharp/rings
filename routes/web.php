@@ -37,10 +37,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'can:admin,App\Realm'], funct
     Route::get('realms', 'RealmController@index');
     Route::get('realms/edit/{realmid}', 'RealmController@edit');
     Route::post('realms', 'RealmController@update');
+    Route::get('permissions', 'PermissionsController@index');
+    Route::post('permissions', 'PermissionsController@update');
 });
 
 Route::group(['prefix' => 'gm', 'middleware' => 'can:gm,App\Realm'], function () {
-    Route::get('realms', 'RealmController@index');
+    Route::get('announce', 'AnnouncementController@index');
 });
 
 Route::group(['prefix' => 'mod', 'middleware' => 'can:moderator,App\Realm'], function () {
