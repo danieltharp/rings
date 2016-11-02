@@ -53,7 +53,7 @@ class RealmPolicy
             ['RealmID', '=', $realm->id],
         ])->orWhere([
             ['id', '=', $user->id],
-            ['gmlevel', '>=', 3],
+            ['gmlevel', '>=', 2],
             ['RealmID', '=', -1]
         ])->count();
 
@@ -76,10 +76,63 @@ class RealmPolicy
             ['RealmID', '=', $realm->id],
         ])->orWhere([
             ['id', '=', $user->id],
+            ['gmlevel', '>=', 1],
+            ['RealmID', '=', -1]
+        ])->count();
+
+        return $level;
+    }
+
+    /**
+     * Determine whether the user is a Global Admin.
+     *
+     * @param  App\Account  $user
+     * @return mixed
+     */
+    public function GlobalAdmin(Account $user)
+    {
+        $level = DB::connection('auth')->table('account_access')->where([
+            ['id', '=', $user->id],
             ['gmlevel', '>=', 3],
             ['RealmID', '=', -1]
         ])->count();
 
         return $level;
     }
+
+    /**
+     * Determine whether the user is a Global GM.
+     *
+     * @param  App\Account  $user
+     * @return mixed
+     */
+    public function GlobalGM(Account $user)
+    {
+        $level = DB::connection('auth')->table('account_access')->where([
+            ['id', '=', $user->id],
+            ['gmlevel', '>=', 2],
+            ['RealmID', '=', -1]
+        ])->count();
+
+        return $level;
+    }
+
+    /**
+     * Determine whether the user is a  Global Moderator.
+     *
+     * @param  App\Account  $user
+     * @return mixed
+     */
+    public function GlobalModerator(Account $user, Realm $realm = null)
+    {
+        $level = DB::connection('auth')->table('account_access')->where([
+            ['id', '=', $user->id],
+            ['gmlevel', '>=', 1],
+            ['RealmID', '=', -1]
+        ])->count();
+
+        return $level;
+    }
+
+
 }

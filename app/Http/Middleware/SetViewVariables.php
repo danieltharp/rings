@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Middleware;
+use App\Announcement;
 use Illuminate\Contracts\Auth\Guard;
 use Closure;
 use Illuminate\Support\Facades\View;
@@ -137,10 +138,15 @@ class SetViewVariables
             }
         } else { $chars = null; }
 
+        $globalAnnounce = Announcement::where('realm_id', -1)->latest()->first() or null;
+        $realmAnnounce = Announcement::where('realm_id', session('realm'))->latest()->first() or null;
+
         View::share('realms', $realms);
         View::share('active', Realm::find(session('realm')));
         View::share('chars', $chars);
         View::share('user', $user);
+        View::share('globalAnnounce', $globalAnnounce);
+        View::share('realmAnnounce', $realmAnnounce);
 
         return $next($request);
     }

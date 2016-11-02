@@ -13,7 +13,8 @@
 
 
 Route::get('/', function () {
-    return view('welcome');
+    $announce = \App\Announcement::where('realm_id', -1)->latest()->first();
+    return view('welcome', compact('announce'));
 });
 Route::get('notes', function(){
     return view('notes');
@@ -43,8 +44,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'can:admin,App\Realm'], funct
 
 Route::group(['prefix' => 'gm', 'middleware' => 'can:gm,App\Realm'], function () {
     Route::get('announce', 'AnnouncementController@index');
+    Route::get('announce/add', 'AnnouncementController@add');
+    Route::post('announce', 'AnnouncementController@create');
+    Route::get('announce/{announcement}/edit', 'AnnouncementController@edit');
+    Route::post('announce/{announcement}', 'AnnouncementController@update');
+    Route::get('announce/{announcement}/delete', 'AnnouncementController@confirmDelete');
+    Route::post('announce/{announcement}/delete', 'AnnouncementController@delete');
 });
 
 Route::group(['prefix' => 'mod', 'middleware' => 'can:moderator,App\Realm'], function () {
-    Route::get('realms', 'RealmController@index');
+    //
 });

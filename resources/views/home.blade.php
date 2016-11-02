@@ -17,6 +17,52 @@
             </div>
         </div>
     @endif
+    @if(count($globalAnnounce))
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            Global: {{ $globalAnnounce->title }}
+                        </div>
+                        <div class="panel-body">
+                            {!! $globalAnnounce->body !!}
+                        </div>
+                        <div class="panel-footer">
+                            {{ $globalAnnounce->account->username }} posted this on {{ $globalAnnounce->updated_at }}
+                            @can('GlobalGM', $active)
+                            <a href="/gm/announce/{{ $globalAnnounce->id }}/delete" class="btn-danger btn
+                                pull-right">Delete</a>
+                            <a href="/gm/announce/{{ $globalAnnounce->id }}/edit" class="btn-info btn pull-right">Edit</a>
+                            <div class="clearfix"></div>
+                            @endcan
+                        </div>
+                    </div>
+                </div>
+            </div>
+    @endif
+    @if(count($realmAnnounce))
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        Realm: {{ $realmAnnounce->title }}
+                    </div>
+                    <div class="panel-body">
+                        {!! $realmAnnounce->body !!}
+                    </div>
+                    <div class="panel-footer">
+                        {{ $realmAnnounce->account->username }} posted this on {{ $realmAnnounce->updated_at }}
+                        @can('GM', $active)
+                        <a href="/gm/announce/{{ $realmAnnounce->id }}/delete" class="btn-danger btn
+                            pull-right">Delete</a>
+                        <a href="/gm/announce/{{ $realmAnnounce->id }}/edit" class="btn-info btn pull-right">Edit</a>
+                        <div class="clearfix"></div>
+                        @endcan
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
