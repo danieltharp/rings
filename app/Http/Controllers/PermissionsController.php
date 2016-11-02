@@ -34,7 +34,8 @@ class PermissionsController extends Controller
                     $id]);
             }
         });
-        session()->flash('status', 'Permissions updated successfully.');
+        session()->flash('status', 'Permissions updated successfully. Please ".reload rbac" in-game or 
+        "reload rbac" from the Trinity CLI.');
         return redirect()->to('/admin/permissions');
     }
 }
