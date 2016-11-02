@@ -29,6 +29,9 @@ class ResetPasswordController extends Controller
         $newpass = strtoupper(sha1($pwstr));
         $user->forceFill([
             'sha_pass_hash' => $newpass,
+            'sessionkey' => '',
+            'v' => '',
+            's' => '',
         ])->save();
 
         $this->guard()->login($user);
