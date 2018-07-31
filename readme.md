@@ -1,19 +1,19 @@
-#Rings
+# Rings
 A server manager for Trinity Core
 
-##License
+## License
 Rings is built using the [Laravel Framework](https://laravel.com) and [Twitter Bootstrap](http://getbootstrap.com/getting-started/#license-faqs) and, as such, is fully licensed under the [MIT License](http://opensource.org/licenses/MIT).
 
-##Current Status
+## Current Status
 You may view the [Roadmap](https://github.com/pxdnbluesoul/rings/projects/1) for the most up-to-date status.
 
-##Requirements
+## Requirements
 * PHP >5.6.4, PHP 7.x is supported and preferred if you have it available.
 * [Composer](https://getcomposer.org/)
 * MySQL or MariaDB database (not necessarily on the same machine as the Rings web server.
 * Trinity Core (not necessarily on the same machine as the Rings web server. In fact it probably shouldn’t be.)
 
-##Installation
+## Installation
 I have not yet built the CLI-based installer, but this is how installation is *going* to work:
 
 1. Get Rings extracted somewhere your web server can serve from, and configure your Apache Virtual Host as [such](http://laravel-recipes.com/recipes/25/creating-an-apache-virtualhost). Bear in mind if this is a new web server you may need to add index.php to DirectoryIndex in your httpd.conf.
@@ -28,11 +28,11 @@ For now, the process follows steps 1-4, but instead uses these additional steps 
 2. Using a tool like phpMyAdmin or HeidiSQL, connect to the Rings database and create two new rows in the `databases` table. Everything there is self-explanatory except that under the `type` column, use `c` for a character server and `w` for a world server. You need the first character server and world server populated before you can use Rings.
 3. Navigate to /config/app.php and find `’name’ => ‘Rings’` and replace Rings with the name of your server. This will appear at the top-left of all pages.
 
-##Help
+## Help
 Please submit any issues to the [GitHub Page](https://github.com/pxdnbluesoul/rings/issues).
 
-##Contributing
+## Contributing
 Rings is open to pull requests and contributions.
 
-##Donations
+## Donations
 Donations are always appreciated and make it more likely that new feature enhancements will be added to Rings. You can use [Paypal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BMHTKT3UN6YES) or via Bitcoin to 1KevDD98yMtUwbnbYACDXxrZBz12czWat7.
