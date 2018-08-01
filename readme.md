@@ -15,11 +15,13 @@ You may view the [Roadmap](https://github.com/pxdnbluesoul/rings/projects/1) for
 
 ## Installation
 1. Get Rings extracted somewhere your web server can serve from, and configure your Apache Virtual Host as [such](http://laravel-recipes.com/recipes/25/creating-an-apache-virtualhost). Bear in mind if this is a new web server you may need to add index.php to DirectoryIndex in your httpd.conf.
-2. From the root of the rings directory: `chmod -R o+w storage` and `chmod -R o+w bootstrap/cache` before proceeding.
+2. From the root of the Rings directory: `chmod -R o+w storage` and `chmod -R o+w bootstrap/cache` before proceeding.
 3. From the root of the Rings directory: `composer install` to finish the Laravel setup.
 4. Edit the `.env` file in the root of the Rings directory and fill out, at a bare minimum, all entries that begin with AUTH_SERVER_ and RINGS_SERVER_. AUTH_SERVER refers to the Trinity Core ‘auth’ database. These could, theoretically, connect to the same database as there are no conflicting names. I would recommend keeping them separate though.
 6. From the root of the Rings directory: `php artisan migrate` to create the databases needed for Rings.
-5. From the root of the Rings directory: `php artisan rings:install` and enter the name of your server and the details of your first realm’s character and world databases. You can enter the remaining server details via Rings in the Admin Control Panel.
+5. From the root of the Rings directory: `php artisan rings:install` and enter the details of one of your realm’s character and world databases. You can enter the remaining server details via Rings in the Admin Control Panel.
+
+You may now log in with your same credentials as the Trinity Core auth server, Rings will use that server for authentication and password resets. Your gmlevel will determine the level of access you have within the Rings control panels per realm.
 
 ## Help
 Please submit any issues to the [GitHub Page](https://github.com/pxdnbluesoul/rings/issues).
