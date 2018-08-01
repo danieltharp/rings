@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        @if(count($announce))
+        @if($announce != null)
             <div class="row">
                 <div class="panel panel-info">
                     <div class="panel-heading">

@@ -17,7 +17,7 @@
             </div>
         </div>
     @endif
-    @if(count($globalAnnounce))
+    @if($globalAnnounce != null)
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <div class="panel panel-info">
@@ -40,7 +40,7 @@
                 </div>
             </div>
     @endif
-    @if(count($realmAnnounce))
+    @if($realmAnnounce != null)
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-info">
